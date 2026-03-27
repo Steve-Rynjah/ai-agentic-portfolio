@@ -6,7 +6,11 @@ import { ArrowRight, ArrowLeft } from "lucide-react";
 
 type Message = { role: "user" | "assistant"; content: string };
 
-export default function AskSteve() {
+interface Props {
+  onChatModeChange?: (isChatMode: boolean) => void;
+}
+
+export default function AskSteve({ onChatModeChange }: Props) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -14,6 +18,12 @@ export default function AskSteve() {
   const inputRef = useRef<HTMLInputElement>(null);
   const isChatMode = messages.length > 0;
 
+  // Notify parent when chat mode changes
+  useEffect(() => {
+    onChatModeChange?.(isChatMode);
+  }, [isChatMode, onChatModeChange]);
+
+  // Auto-scroll to latest message
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
@@ -37,22 +47,20 @@ export default function AskSteve() {
       const data = await res.json();
       setMessages((prev) => [
         ...prev,
-        {
-          role: "assistant",
-          content: data.reply ?? "No response received.",
-        },
+        { role: "assistant", content: data.reply ?? "No response received." },
       ]);
     } catch {
       setMessages((prev) => [
         ...prev,
-        {
-          role: "assistant",
-          content: "Something went wrong. Please try again.",
-        },
+        { role: "assistant", content: "Something went wrong. Please try again." },
       ]);
     } finally {
       setLoading(false);
     }
+  }
+
+  function handleBack() {
+    setMessages([]);
   }
 
   return (
@@ -76,13 +84,15 @@ export default function AskSteve() {
               className="mb-5"
             >
               <div className="w-12 h-12 bg-black rounded-xl flex items-center justify-center mx-auto shadow-lg">
-                <svg
-                  viewBox="0 0 24 24"
-                  width="22"
-                  height="22"
-                  fill="white"
-                >
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="white">
+                  <path
+                    d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </div>
             </motion.div>
@@ -115,7 +125,10 @@ export default function AskSteve() {
               className="mb-10"
             >
               <div className="w-36 h-36 rounded-full overflow-hidden bg-gradient-to-br from-zinc-100 via-zinc-50 to-white shadow-xl border border-zinc-100 flex items-center justify-center">
-                <span className="text-[80px] leading-none select-none" style={{ marginTop: 8 }}>
+                <span
+                  className="text-[80px] leading-none select-none"
+                  style={{ marginTop: 8 }}
+                >
                   🧑🏻‍💻
                 </span>
               </div>
@@ -155,7 +168,6 @@ export default function AskSteve() {
                 </motion.button>
               </div>
             </motion.div>
-
           </motion.div>
         ) : (
           /* ─── CHAT STATE ─── */
@@ -173,7 +185,7 @@ export default function AskSteve() {
               style={{ borderBottom: "1px solid #F0F0F0" }}
             >
               <button
-                onClick={() => setMessages([])}
+                onClick={handleBack}
                 className="w-8 h-8 flex items-center justify-center text-zinc-400 hover:text-black transition-colors rounded-full hover:bg-zinc-50"
               >
                 <ArrowLeft size={16} />
@@ -190,8 +202,8 @@ export default function AskSteve() {
               </div>
             </div>
 
-            {/* Messages */}
-            <div className="flex-1 overflow-y-auto px-5 py-5 space-y-4 pb-36">
+            {/* Messages — scrollable, no extra bottom padding needed */}
+            <div className="flex-1 overflow-y-auto px-5 py-5 space-y-4">
               <AnimatePresence initial={false}>
                 {messages.map((msg, i) => (
                   <motion.div
@@ -235,7 +247,10 @@ export default function AskSteve() {
                     <div className="w-7 h-7 rounded-full bg-gradient-to-br from-zinc-100 to-zinc-50 flex items-center justify-center text-base shrink-0 border border-zinc-100">
                       🧑🏻‍💻
                     </div>
-                    <div className="px-4 py-3 rounded-2xl rounded-bl-sm" style={{ background: "#F5F5F5" }}>
+                    <div
+                      className="px-4 py-3 rounded-2xl rounded-bl-sm"
+                      style={{ background: "#F5F5F5" }}
+                    >
                       <div className="flex gap-1 items-center h-4">
                         {[0, 1, 2].map((dot) => (
                           <motion.span
@@ -243,11 +258,7 @@ export default function AskSteve() {
                             className="w-1.5 h-1.5 rounded-full"
                             style={{ background: "#D4D4D4" }}
                             animate={{ opacity: [0.3, 1, 0.3], scale: [0.85, 1, 0.85] }}
-                            transition={{
-                              duration: 1.2,
-                              repeat: Infinity,
-                              delay: dot * 0.2,
-                            }}
+                            transition={{ duration: 1.2, repeat: Infinity, delay: dot * 0.2 }}
                           />
                         ))}
                       </div>
@@ -258,9 +269,9 @@ export default function AskSteve() {
               <div ref={bottomRef} />
             </div>
 
-            {/* Chat input - fixed at bottom above tabs */}
+            {/* Chat input — in flow at bottom (no tabs to clear) */}
             <div
-              className="absolute bottom-24 left-0 right-0 px-5 py-3"
+              className="shrink-0 px-5 py-3"
               style={{
                 background: "rgba(255,255,255,0.92)",
                 backdropFilter: "blur(16px)",
