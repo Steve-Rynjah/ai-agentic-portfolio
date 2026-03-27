@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "AI Agentic Portfolio",
+    "description": "A production-ready portfolio powered by Claude + Jira MCP, featuring an AI chat assistant (Ask Steve) built with OpenRouter.",
+    "tags": ["Next.js", "TypeScript", "OpenRouter", "MCP"],
+    "year": "2024",
+    "link": "#",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "Real-time Analytics Dashboard",
+    "description": "Scalable dashboard with live data streams, custom charting, and role-based access built on Next.js and WebSockets.",
+    "tags": ["Next.js", "WebSockets", "Chart.js", "PostgreSQL"],
+    "year": "2024",
+    "link": "#",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title": "E-commerce Platform",
+    "description": "Full-stack e-commerce solution with cart, payments via Stripe, inventory management and admin panel.",
+    "tags": ["React", "Node.js", "Stripe", "MongoDB"],
+    "year": "2023",
+    "link": "#",
+    "featured": false
+  },
+  {
+    "id": 4,
+    "title": "DevOps Pipeline Automation",
+    "description": "CI/CD pipeline automation tool that reduced deployment time by 60% using GitHub Actions and Docker.",
+    "tags": ["Docker", "GitHub Actions", "Bash", "AWS"],
+    "year": "2023",
+    "link": "#",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "title": "Mobile Fitness Tracker",
+    "description": "Cross-platform React Native app with workout logging, progress charts, and social sharing.",
+    "tags": ["React Native", "Expo", "Firebase", "Redux"],
+    "year": "2022",
+    "link": "#",
+    "featured": false
+  }
+]

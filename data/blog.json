@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "Building AI Agents with Claude MCP",
+    "excerpt": "How I wired Claude Code to Jira MCP to execute real software tasks autonomously — and what I learned.",
+    "date": "March 2024",
+    "readTime": "8 min",
+    "tags": ["AI", "MCP", "Claude"]
+  },
+  {
+    "id": 2,
+    "title": "Why I Moved from Pages Router to App Router",
+    "excerpt": "A practical breakdown of the migration, performance gains, and the Server Components mental model shift.",
+    "date": "February 2024",
+    "readTime": "6 min",
+    "tags": ["Next.js", "Performance"]
+  },
+  {
+    "id": 3,
+    "title": "Designing for Developers: Minimal UI Systems",
+    "excerpt": "My approach to building UI that is clean, purposeful, and fast — without reaching for a component library.",
+    "date": "January 2024",
+    "readTime": "5 min",
+    "tags": ["Design", "Tailwind", "UI"]
+  },
+  {
+    "id": 4,
+    "title": "OpenRouter vs Direct API: What I Chose and Why",
+    "excerpt": "Comparing cost, latency, and model flexibility when building AI-powered features into web apps.",
+    "date": "December 2023",
+    "readTime": "7 min",
+    "tags": ["AI", "OpenRouter", "API"]
+  }
+]

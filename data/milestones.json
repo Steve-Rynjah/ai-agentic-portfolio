@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "year": "2024",
+    "title": "Built AI Agentic Portfolio",
+    "description": "Designed and shipped a portfolio driven by AI agents, integrating Jira MCP, OpenRouter, and Next.js App Router.",
+    "highlight": true
+  },
+  {
+    "id": 2,
+    "year": "2023",
+    "title": "Led Platform Re-architecture",
+    "description": "Drove the migration of a legacy monolith to a microservices architecture, reducing infra costs by 40%.",
+    "highlight": false
+  },
+  {
+    "id": 3,
+    "year": "2022",
+    "title": "Senior Engineer Promotion",
+    "description": "Promoted to Senior Full-Stack Engineer after shipping three high-impact products in under 18 months.",
+    "highlight": false
+  },
+  {
+    "id": 4,
+    "year": "2021",
+    "title": "First Open Source Contribution",
+    "description": "Merged a performance fix into a popular React state management library with 20k+ GitHub stars.",
+    "highlight": false
+  },
+  {
+    "id": 5,
+    "year": "2020",
+    "title": "Joined the Industry",
+    "description": "Started as a Full-Stack Developer, building production web apps from day one.",
+    "highlight": false
+  }
+]
