@@ -65,16 +65,6 @@ export default function BottomTabs({ activeTab, onTabChange }: Props) {
               transition: "background 0.25s ease, box-shadow 0.25s ease, border 0.25s ease",
             }}
           >
-            {/* Active glow spot behind icon */}
-            {isActive && (
-              <motion.div
-                layoutId="tab-glow"
-                className="absolute inset-0 rounded-[22px] opacity-15"
-                style={{ background: `radial-gradient(circle at 50% 50%, ${activeColor}, transparent 70%)` }}
-                transition={{ duration: 0.25 }}
-              />
-            )}
-
             <Icon
               size={21}
               strokeWidth={isActive ? 2.2 : 1.7}
