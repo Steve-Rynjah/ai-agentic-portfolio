@@ -1,104 +1,130 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 import milestones from "@/data/milestones.json";
-
-const ACCENT_COLORS = ["#6366F1", "#10B981", "#F59E0B", "#F43F5E", "#8B5CF6"];
 
 export default function Milestones() {
   return (
-    <div className="h-full overflow-y-auto">
-      <div className="px-6 py-8 pb-36 max-w-3xl mx-auto">
-        {/* Header */}
+    /* Outer: paddingBottom reserves space above the fixed BottomTabs (~110px) */
+    <div className="h-full flex flex-col" style={{ paddingBottom: '115px' }}>
+
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="px-6 pt-8 pb-2 shrink-0 w-full max-w-5xl mx-auto"
+      >
+        <p className="text-[11px] text-zinc-400 tracking-widest uppercase mb-1">Journey</p>
+        <h1 className="text-3xl font-bold tracking-tight text-black">Milestones</h1>
+        <p className="text-sm text-zinc-400 mt-1">{milestones.length} years of building</p>
+
+        {/* Animated down-arrow scroll hint */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="mb-10"
+          className="mt-3 flex items-center gap-1.5"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
         >
-          <p className="text-[11px] text-zinc-400 tracking-widest uppercase mb-2">Journey</p>
-          <h1 className="text-3xl font-bold tracking-tight text-black">Milestones</h1>
-          <p className="text-sm text-zinc-400 mt-1.5">
-            Key moments across {milestones.length} years of building
-          </p>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ChevronDown size={16} className="text-zinc-300" strokeWidth={2} />
+          </motion.div>
+          <span className="text-[10px] text-zinc-300 tracking-widest uppercase font-medium">
+            Scroll to explore
+          </span>
         </motion.div>
+      </motion.div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Gradient connecting line */}
-          <div
-            className="absolute left-[21px] top-3 bottom-3 w-0.5 rounded-full"
-            style={{
-              background:
-                "linear-gradient(to bottom, rgba(99,102,241,0.5), rgba(16,185,129,0.4), rgba(244,63,94,0.4))",
-            }}
-          />
+      {/* ScrollStack — fills remaining height above the tab-bar padding */}
+      <div className="flex-1 min-h-0">
+        <ScrollStack
+          className="w-full max-w-5xl mx-auto"
+          stackPosition="2%"
+          scaleEndPosition="1%"
+          itemDistance={60}
+          itemStackDistance={18}
+          baseScale={0.9}
+          itemScale={0.025}
+        >
+          {milestones.map((m, i) => (
+            <ScrollStackItem key={m.id}>
+              <div className="px-8 py-7 h-full flex flex-col gap-5">
 
-          <div className="space-y-5">
-            {milestones.map((m, i) => {
-              const color = ACCENT_COLORS[i % ACCENT_COLORS.length];
-              return (
-                <motion.div
-                  key={m.id}
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.09, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="flex gap-5"
-                >
-                  {/* Timeline dot */}
-                  <div className="flex flex-col items-center shrink-0 pt-5">
-                    <div
-                      className="w-[18px] h-[18px] rounded-full border-2 z-10 shrink-0"
-                      style={{
-                        borderColor: color,
-                        background: m.highlight ? color : "white",
-                        boxShadow: m.highlight ? `0 0 14px ${color}70` : "none",
-                      }}
-                    />
-                  </div>
+                {/* Year watermark + highlight badge */}
+                <div className="flex items-center justify-between">
+                  <span className="text-5xl font-black text-zinc-100 tracking-tighter select-none leading-none">
+                    {m.year}
+                  </span>
+                  {m.highlight && (
+                    <span className="text-[10px] px-3 py-1 rounded-full bg-black text-white font-semibold tracking-wide">
+                      Key Milestone
+                    </span>
+                  )}
+                </div>
 
-                  {/* Glass card */}
-                  <motion.div
-                    whileHover={{ scale: 1.015, y: -2 }}
-                    transition={{ type: "spring", stiffness: 350, damping: 28 }}
-                    className="flex-1 rounded-2xl p-5"
-                    style={{
-                      background: "rgba(255,255,255,0.70)",
-                      backdropFilter: "blur(20px)",
-                      WebkitBackdropFilter: "blur(20px)",
-                      border: `1px solid ${
-                        m.highlight ? color + "35" : "rgba(255,255,255,0.88)"
-                      }`,
-                      boxShadow: m.highlight
-                        ? `0 8px 32px ${color}18, inset 0 1px 0 rgba(255,255,255,0.95)`
-                        : "0 4px 20px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.95)",
-                    }}
-                  >
-                    {/* Year + badge row */}
-                    <div className="flex items-center justify-between mb-2">
+                {/* Title + Role */}
+                <div>
+                  <h2 className="text-xl font-bold text-black leading-snug mb-1">
+                    {m.title}
+                  </h2>
+                  <p className="text-xs text-zinc-400 font-medium">
+                    {(m as typeof m & { role: string }).role}
+                  </p>
+                </div>
+
+                {/* Divider */}
+                <div className="border-t border-[#E5E5E5]" />
+
+                {/* Description */}
+                <p className="text-sm text-zinc-500 leading-relaxed">{m.description}</p>
+
+                {/* Skills */}
+                <div>
+                  <p className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold mb-2">
+                    Skills Learned
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {(m as typeof m & { skills: string[] }).skills.map((skill) => (
                       <span
-                        className="text-xs font-bold tracking-wider"
-                        style={{ color }}
+                        key={skill}
+                        className="text-[11px] px-2.5 py-1 rounded-full border border-[#E5E5E5] bg-white text-zinc-500 font-medium"
                       >
-                        {m.year}
+                        {skill}
                       </span>
-                      {m.highlight && (
-                        <span
-                          className="text-[10px] px-2.5 py-0.5 rounded-full font-semibold"
-                          style={{ background: color + "18", color }}
-                        >
-                          Key Milestone
-                        </span>
-                      )}
+                    ))}
+                  </div>
+                </div>
+
+                {/* Achievement */}
+                <div className="mt-auto">
+                  <div className="flex gap-3 p-4 rounded-xl bg-zinc-50 border border-[#E5E5E5]">
+                    <span className="text-base shrink-0 mt-0.5">★</span>
+                    <div>
+                      <p className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold mb-1">
+                        Achievement
+                      </p>
+                      <p className="text-xs text-zinc-600 leading-relaxed">
+                        {(m as typeof m & { achievement: string }).achievement}
+                      </p>
                     </div>
-                    <h3 className="text-sm font-bold text-black mb-1.5">{m.title}</h3>
-                    <p className="text-xs text-zinc-500 leading-relaxed">{m.description}</p>
-                  </motion.div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
+                  </div>
+                </div>
+
+                {/* Index */}
+                <div className="flex justify-end">
+                  <span className="text-[10px] text-zinc-200 font-mono tabular-nums">
+                    {String(i + 1).padStart(2, "0")} / {String(milestones.length).padStart(2, "0")}
+                  </span>
+                </div>
+              </div>
+            </ScrollStackItem>
+          ))}
+        </ScrollStack>
       </div>
     </div>
   );

@@ -5,7 +5,8 @@
     "excerpt": "How I wired Claude Code to Jira MCP to execute real software tasks autonomously — and what I learned.",
     "date": "March 2024",
     "readTime": "8 min",
-    "tags": ["AI", "MCP", "Claude"]
+    "tags": ["AI", "MCP", "Claude"],
+    "image": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80"
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "excerpt": "A practical breakdown of the migration, performance gains, and the Server Components mental model shift.",
     "date": "February 2024",
     "readTime": "6 min",
-    "tags": ["Next.js", "Performance"]
+    "tags": ["Next.js", "Performance"],
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80"
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "excerpt": "My approach to building UI that is clean, purposeful, and fast — without reaching for a component library.",
     "date": "January 2024",
     "readTime": "5 min",
-    "tags": ["Design", "Tailwind", "UI"]
+    "tags": ["Design", "Tailwind", "UI"],
+    "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80"
   },
   {
     "id": 4,
@@ -29,6 +32,7 @@
     "excerpt": "Comparing cost, latency, and model flexibility when building AI-powered features into web apps.",
     "date": "December 2023",
     "readTime": "7 min",
-    "tags": ["AI", "OpenRouter", "API"]
+    "tags": ["AI", "OpenRouter", "API"],
+    "image": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80"
   }
 ]

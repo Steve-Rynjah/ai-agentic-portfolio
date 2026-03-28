@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import MouseGlow from "@/components/MouseGlow";
+import SplashCursor from "@/components/SplashCursor";
 import BottomTabs from "@/components/BottomTabs";
 import AskSteve from "@/components/AskSteve";
 import Projects from "@/components/Projects";
@@ -43,8 +43,8 @@ export default function Home() {
 
   return (
     <div className="h-full relative bg-white overflow-hidden">
-      {/* ── Jellyfish canvas (z-5, behind everything) */}
-      <MouseGlow />
+      {/* ── Splash cursor fluid simulation (z-50, pointer-events-none) */}
+      <SplashCursor />
 
       {/* ── Dynamic background watermark text — hidden in chat mode */}
       {!inChat && (

@@ -4,34 +4,49 @@
     "year": "2024",
     "title": "Built AI Agentic Portfolio",
     "description": "Designed and shipped a portfolio driven by AI agents, integrating Jira MCP, OpenRouter, and Next.js App Router.",
-    "highlight": true
+    "highlight": true,
+    "role": "Full-Stack Engineer & AI Developer",
+    "skills": ["Next.js", "TypeScript", "OpenRouter API", "Jira MCP", "GSAP", "Framer Motion"],
+    "achievement": "First portfolio powered by Claude as autonomous developer — tasks fetched from Jira and executed end-to-end by AI agents."
   },
   {
     "id": 2,
     "year": "2023",
     "title": "Led Platform Re-architecture",
     "description": "Drove the migration of a legacy monolith to a microservices architecture, reducing infra costs by 40%.",
-    "highlight": false
+    "highlight": false,
+    "role": "Senior Full-Stack Engineer",
+    "skills": ["Microservices", "Docker", "Kubernetes", "CI/CD", "Node.js", "PostgreSQL"],
+    "achievement": "Reduced infrastructure costs by 40% and improved system uptime from 99.1% to 99.9% post-migration."
   },
   {
     "id": 3,
     "year": "2022",
     "title": "Senior Engineer Promotion",
     "description": "Promoted to Senior Full-Stack Engineer after shipping three high-impact products in under 18 months.",
-    "highlight": false
+    "highlight": false,
+    "role": "Senior Full-Stack Engineer",
+    "skills": ["React", "Next.js", "PostgreSQL", "REST APIs", "Team Leadership", "System Design"],
+    "achievement": "Shipped 3 high-impact products on time — each hitting production KPIs within the first 30 days of launch."
   },
   {
     "id": 4,
     "year": "2021",
     "title": "First Open Source Contribution",
     "description": "Merged a performance fix into a popular React state management library with 20k+ GitHub stars.",
-    "highlight": false
+    "highlight": false,
+    "role": "Mid-Level Developer",
+    "skills": ["Open Source", "React", "Performance Optimization", "GitHub Actions", "Testing"],
+    "achievement": "Fix reduced unnecessary re-render cycles by 30% across all consumer apps using the library globally."
   },
   {
     "id": 5,
     "year": "2020",
     "title": "Joined the Industry",
-    "description": "Started as a Full-Stack Developer, building production web apps from day one.",
-    "highlight": false
+    "description": "Started as a Full-Stack Developer, building production web apps from day one at a fast-paced startup.",
+    "highlight": false,
+    "role": "Junior Full-Stack Developer",
+    "skills": ["JavaScript", "React", "Node.js", "MySQL", "HTML/CSS", "REST APIs"],
+    "achievement": "Deployed first production app within 3 months of joining — a real-time dashboard used by 500+ active users."
   }
 ]

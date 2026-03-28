@@ -142,10 +142,13 @@ export default function AskSteve({ onChatModeChange }: Props) {
               className="w-full max-w-[520px]"
             >
               <div
-                className="flex items-center gap-3 px-5 py-3.5 rounded-full bg-white"
+                className="flex items-center gap-3 px-5 py-3.5 rounded-full"
                 style={{
-                  border: "1.5px solid #E5E5E5",
-                  boxShadow: "0 2px 20px rgba(0,0,0,0.06)",
+                  background: "rgba(255, 255, 255, 0.60)",
+                  backdropFilter: "blur(24px) saturate(180%)",
+                  WebkitBackdropFilter: "blur(24px) saturate(180%)",
+                  border: "1.5px solid rgba(255,255,255,0.75)",
+                  boxShadow: "0 4px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.9)",
                 }}
               >
                 <input
@@ -161,8 +164,7 @@ export default function AskSteve({ onChatModeChange }: Props) {
                   onClick={() => handleSend()}
                   disabled={!input.trim()}
                   whileTap={{ scale: 0.93 }}
-                  className="w-9 h-9 rounded-full flex items-center justify-center transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
-                  style={{ background: "#3B82F6" }}
+                  className="w-9 h-9 rounded-full flex items-center justify-center transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0 bg-black"
                 >
                   <ArrowRight size={16} className="text-white" />
                 </motion.button>
@@ -299,8 +301,7 @@ export default function AskSteve({ onChatModeChange }: Props) {
                   onClick={() => handleSend()}
                   disabled={!input.trim() || loading}
                   whileTap={{ scale: 0.93 }}
-                  className="w-8 h-8 rounded-full flex items-center justify-center transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
-                  style={{ background: "#3B82F6" }}
+                  className="w-8 h-8 rounded-full flex items-center justify-center transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0 bg-black"
                 >
                   <ArrowRight size={15} className="text-white" />
                 </motion.button>
